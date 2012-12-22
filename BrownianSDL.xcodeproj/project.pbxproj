@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7D25BF571677B7D300E9750A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF561677B7D300E9750A /* Foundation.framework */; };
+		7D25BF591677B7D300E9750A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF581677B7D300E9750A /* Cocoa.framework */; };
+		7D25BF5F1677B7D300E9750A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D25BF5D1677B7D300E9750A /* InfoPlist.strings */; };
+		7D25BF671677B7D400E9750A /* SDLMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D25BF661677B7D400E9750A /* SDLMain.mm */; };
+		7D25BF761677B84A00E9750A /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D25BF721677B84A00E9750A /* GameEngine.cpp */; };
+		7D25BF771677B84A00E9750A /* BrownianEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D25BF741677B84A00E9750A /* BrownianEngine.cpp */; };
+		7D25BF7A1677BC1700E9750A /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D25BF781677BC1700E9750A /* Particle.cpp */; };
+		7D25BF7C1677C0B500E9750A /* SDL_gfx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF7B1677C0B500E9750A /* SDL_gfx.framework */; };
+		7D25BF7D1677C0CD00E9750A /* SDL_gfx.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D25BF7B1677C0B500E9750A /* SDL_gfx.framework */; };
+		7D25BF7F1677CD0600E9750A /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF7E1677CD0600E9750A /* SDL.framework */; };
+		7D25BF801677CD2800E9750A /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D25BF7E1677CD0600E9750A /* SDL.framework */; };
+		7D25BF841677E79200E9750A /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D25BF821677E79200E9750A /* Utilities.cpp */; };
+		7D25BF861677FF3900E9750A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D25BF851677FF3900E9750A /* icon.png */; };
+		7D25BF8816780BBD00E9750A /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF8716780BBD00E9750A /* SDL_ttf.framework */; };
+		7D25BF8916780C1C00E9750A /* SDL_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D25BF8716780BBD00E9750A /* SDL_ttf.framework */; };
+		7D25BF8C1678106500E9750A /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D25BF8A16780F8B00E9750A /* Arial.ttf */; };
+		7DC305481685143A004D1226 /* Arial.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D25BF8A16780F8B00E9750A /* Arial.ttf */; };
+		7DC3054C16851752004D1226 /* Averager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3054A16851752004D1226 /* Averager.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D25BF501677B7D300E9750A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7DC305481685143A004D1226 /* Arial.ttf in CopyFiles */,
+				7D25BF8916780C1C00E9750A /* SDL_ttf.framework in CopyFiles */,
+				7D25BF801677CD2800E9750A /* SDL.framework in CopyFiles */,
+				7D25BF7D1677C0CD00E9750A /* SDL_gfx.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7D25BF521677B7D300E9750A /* BrownianSDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrownianSDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D25BF561677B7D300E9750A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7D25BF581677B7D300E9750A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7D25BF5C1677B7D300E9750A /* BrownianSDL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BrownianSDL-Info.plist"; sourceTree = "<group>"; };
+		7D25BF5E1677B7D300E9750A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7D25BF621677B7D300E9750A /* BrownianSDL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrownianSDL-Prefix.pch"; sourceTree = "<group>"; };
+		7D25BF631677B7D300E9750A /* SDLMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		7D25BF661677B7D400E9750A /* SDLMain.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SDLMain.mm; sourceTree = "<group>"; };
+		7D25BF721677B84A00E9750A /* GameEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameEngine.cpp; sourceTree = "<group>"; };
+		7D25BF731677B84A00E9750A /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngine.h; sourceTree = "<group>"; };
+		7D25BF741677B84A00E9750A /* BrownianEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BrownianEngine.cpp; sourceTree = "<group>"; };
+		7D25BF751677B84A00E9750A /* BrownianEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrownianEngine.h; sourceTree = "<group>"; };
+		7D25BF781677BC1700E9750A /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		7D25BF791677BC1700E9750A /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		7D25BF7B1677C0B500E9750A /* SDL_gfx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_gfx.framework; path = /opt/local/Library/Frameworks/SDL_gfx.framework; sourceTree = "<absolute>"; };
+		7D25BF7E1677CD0600E9750A /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /opt/local/Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
+		7D25BF821677E79200E9750A /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
+		7D25BF831677E79200E9750A /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		7D25BF851677FF3900E9750A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		7D25BF8716780BBD00E9750A /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = /opt/local/Library/Frameworks/SDL_ttf.framework; sourceTree = "<absolute>"; };
+		7D25BF8A16780F8B00E9750A /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
+		7DC3054A16851752004D1226 /* Averager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Averager.cpp; sourceTree = "<group>"; };
+		7DC3054B16851752004D1226 /* Averager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Averager.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D25BF4E1677B7D300E9750A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D25BF8816780BBD00E9750A /* SDL_ttf.framework in Frameworks */,
+				7D25BF7F1677CD0600E9750A /* SDL.framework in Frameworks */,
+				7D25BF7C1677C0B500E9750A /* SDL_gfx.framework in Frameworks */,
+				7D25BF571677B7D300E9750A /* Foundation.framework in Frameworks */,
+				7D25BF591677B7D300E9750A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D25BF461677B7D300E9750A = {
+			isa = PBXGroup;
+			children = (
+				7D25BF5A1677B7D300E9750A /* BrownianSDL */,
+				7D25BF551677B7D300E9750A /* Frameworks */,
+				7D25BF531677B7D300E9750A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7D25BF531677B7D300E9750A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D25BF521677B7D300E9750A /* BrownianSDL.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D25BF551677B7D300E9750A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D25BF7E1677CD0600E9750A /* SDL.framework */,
+				7D25BF7B1677C0B500E9750A /* SDL_gfx.framework */,
+				7D25BF8716780BBD00E9750A /* SDL_ttf.framework */,
+				7D25BF561677B7D300E9750A /* Foundation.framework */,
+				7D25BF581677B7D300E9750A /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D25BF5A1677B7D300E9750A /* BrownianSDL */ = {
+			isa = PBXGroup;
+			children = (
+				7D25BF631677B7D300E9750A /* SDLMain.h */,
+				7D25BF661677B7D400E9750A /* SDLMain.mm */,
+				7D25BF681677B7D400E9750A /* Game */,
+				7D25BF5B1677B7D300E9750A /* Supporting Files */,
+			);
+			path = BrownianSDL;
+			sourceTree = "<group>";
+		};
+		7D25BF5B1677B7D300E9750A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D25BF8A16780F8B00E9750A /* Arial.ttf */,
+				7D25BF851677FF3900E9750A /* icon.png */,
+				7D25BF5C1677B7D300E9750A /* BrownianSDL-Info.plist */,
+				7D25BF5D1677B7D300E9750A /* InfoPlist.strings */,
+				7D25BF621677B7D300E9750A /* BrownianSDL-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D25BF681677B7D400E9750A /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				7D25BF731677B84A00E9750A /* GameEngine.h */,
+				7D25BF721677B84A00E9750A /* GameEngine.cpp */,
+				7D25BF751677B84A00E9750A /* BrownianEngine.h */,
+				7D25BF741677B84A00E9750A /* BrownianEngine.cpp */,
+				7D25BF791677BC1700E9750A /* Particle.h */,
+				7D25BF781677BC1700E9750A /* Particle.cpp */,
+				7DC3054A16851752004D1226 /* Averager.cpp */,
+				7DC3054B16851752004D1226 /* Averager.h */,
+				7D25BF831677E79200E9750A /* Utilities.h */,
+				7D25BF821677E79200E9750A /* Utilities.cpp */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7D25BF511677B7D300E9750A /* BrownianSDL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D25BF6E1677B7D400E9750A /* Build configuration list for PBXNativeTarget "BrownianSDL" */;
+			buildPhases = (
+				7D25BF4D1677B7D300E9750A /* Sources */,
+				7D25BF4E1677B7D300E9750A /* Frameworks */,
+				7D25BF4F1677B7D300E9750A /* Resources */,
+				7D25BF501677B7D300E9750A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrownianSDL;
+			productName = BrownianSDL;
+			productReference = 7D25BF521677B7D300E9750A /* BrownianSDL.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D25BF481677B7D300E9750A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Applied Minds, LLC";
+			};
+			buildConfigurationList = 7D25BF4B1677B7D300E9750A /* Build configuration list for PBXProject "BrownianSDL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7D25BF461677B7D300E9750A;
+			productRefGroup = 7D25BF531677B7D300E9750A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7D25BF511677B7D300E9750A /* BrownianSDL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D25BF4F1677B7D300E9750A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D25BF5F1677B7D300E9750A /* InfoPlist.strings in Resources */,
+				7D25BF861677FF3900E9750A /* icon.png in Resources */,
+				7D25BF8C1678106500E9750A /* Arial.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D25BF4D1677B7D300E9750A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D25BF671677B7D400E9750A /* SDLMain.mm in Sources */,
+				7D25BF761677B84A00E9750A /* GameEngine.cpp in Sources */,
+				7D25BF771677B84A00E9750A /* BrownianEngine.cpp in Sources */,
+				7D25BF7A1677BC1700E9750A /* Particle.cpp in Sources */,
+				7D25BF841677E79200E9750A /* Utilities.cpp in Sources */,
+				7DC3054C16851752004D1226 /* Averager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7D25BF5D1677B7D300E9750A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D25BF5E1677B7D300E9750A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7D25BF6C1677B7D400E9750A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}\"",
+					"\"${SRCROOT}/${PROJECT_NAME}/SDL.framework/Headers\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7D25BF6D1677B7D400E9750A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}\"",
+					"\"${SRCROOT}/${PROJECT_NAME}/SDL.framework/Headers\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7D25BF6F1677B7D400E9750A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BrownianSDL\"",
+					/opt/local/Library/Frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrownianSDL/BrownianSDL-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}\"",
+					"\"${SRCROOT}/${PROJECT_NAME}/SDL.framework/Headers\"",
+					/opt/local/Library/Frameworks/SDL_gfx.framework/Headers,
+					/opt/local/Library/Frameworks/SDL_ttf.framework/Headers,
+					/opt/local/include/eigen3,
+				);
+				INFOPLIST_FILE = "BrownianSDL/BrownianSDL-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = BrownianSDL;
+				SDKROOT = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7D25BF701677B7D400E9750A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BrownianSDL\"",
+					/opt/local/Library/Frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrownianSDL/BrownianSDL-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${SRCROOT}\"",
+					"\"${SRCROOT}/${PROJECT_NAME}/SDL.framework/Headers\"",
+					/opt/local/Library/Frameworks/SDL_gfx.framework/Headers,
+					/opt/local/Library/Frameworks/SDL_ttf.framework/Headers,
+					/opt/local/include/eigen3,
+				);
+				INFOPLIST_FILE = "BrownianSDL/BrownianSDL-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = BrownianSDL;
+				SDKROOT = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D25BF4B1677B7D300E9750A /* Build configuration list for PBXProject "BrownianSDL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D25BF6C1677B7D400E9750A /* Debug */,
+				7D25BF6D1677B7D400E9750A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D25BF6E1677B7D400E9750A /* Build configuration list for PBXNativeTarget "BrownianSDL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D25BF6F1677B7D400E9750A /* Debug */,
+				7D25BF701677B7D400E9750A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7D25BF481677B7D300E9750A /* Project object */;
+}
