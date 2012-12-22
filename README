@@ -1,0 +1,4 @@
+BrownianSDL
+
+This project implements a simple Brownian-like motion simulator as a test 
+of a simple SDL game/simulation engine. It uses SDL drawing and AntTweakBar.
