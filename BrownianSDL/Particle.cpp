@@ -72,9 +72,8 @@ Particle::render()
     filledCircleColor(surface, q_(0), q_(1), radius_, fillColor_);
     circleColor(surface, q_(0), q_(1), radius_, borderColor_);
     
-    Uint32 white = 0xffffffff;
     Vector2d v(q_(0) + radius_ * cos(heading_), q_(1) + radius_ * sin(heading_));
-    aalineColor(surface, q_(0), q_(1), v(0), v(1), white);
+    aalineColor(surface, q_(0), q_(1), v(0), v(1), borderColor_);
 }
 
 void
