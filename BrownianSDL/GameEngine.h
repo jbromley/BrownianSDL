@@ -2,7 +2,11 @@
 #define GAMEENGINE_H
 
 #include <string> 
-#include "SDL.h"
+#include <SDL/SDL.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include "GLColor.h"
+
  
 /** The base engine class. */
 class GameEngine  
@@ -28,9 +32,8 @@ public:
     
     /**
      * Does all game rendering.
-     * @param destSurface The main screen surface.
      */
-    virtual void render(SDL_Surface* destSurface) {}
+    virtual void render() {}
     
     /**
      * Cleans up all allocated data and resources.
@@ -101,8 +104,8 @@ public:
     SDL_Surface* surface();
     int height() const;
     int width() const;
-    void setBackgroundColor(Uint32 backgroundColor);
-    Uint32 backgroundColor() const;
+    void setBackgroundColor(const GLColor& backgroundColor);
+    GLColor backgroundColor() const;
     int fps() const;
     std::string resourcePath() const;
 
@@ -123,7 +126,7 @@ private:
     int height_;
     
     /** Background color */
-    Uint32 backgroundColor_;
+    GLColor backgroundColor_;
     
     /** Has quit been called? */
     bool quit_;

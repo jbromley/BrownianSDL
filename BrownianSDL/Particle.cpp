@@ -14,20 +14,16 @@
 
 
 Particle::Particle(double x, double y, int radius, double speed,
-                   Uint32 color, GameEngine* world)
-: q_(Vector2d(x, y)), heading_(M_PI * arc4random_uniform(4) / 2.0),
-  radius_(radius), speed_(speed), borderColor_(color), useAverager_(true),
-  world_(world)
-{
-    // Make the fill color a lighter version of the border.
-    Uint8 r, g, b, a;
-    convertColorToRGBA(borderColor_, &r, &g, &b, &a);
-    r = static_cast<Uint8>(r * 0.5);
-    g = static_cast<Uint8>(g * 0.5);
-    b = static_cast<Uint8>(b * 0.5);
-    a = static_cast<Uint8>(a * 0.5);
-    fillColor_ = convertRGBAToColor(r, g, b, a);
-    
+                   const GLColor& color, GameEngine* world)
+  : q_(Vector2d(x, y)),
+    heading_(M_PI * arc4random_uniform(4) / 2.0),
+    radius_(radius),
+    speed_(speed),
+    borderColor_(color),
+    fillColor_(color.lighten(0.5f)),
+    useAverager_(true),
+    world_(world)
+{    
     averager_ = new Averager(0.5, heading_);
 }
 
@@ -68,12 +64,43 @@ Particle::update(long timeElapsed)
 void
 Particle::render()
 {
-    SDL_Surface* surface = world_->surface();
-    filledCircleColor(surface, q_(0), q_(1), radius_, fillColor_);
-    circleColor(surface, q_(0), q_(1), radius_, borderColor_);
+    const int segments = 16;
+    const float increment = 2.0f * M_PI / segments;
+    Vector2d vertices[segments];
     
-    Vector2d v(q_(0) + radius_ * cos(heading_), q_(1) + radius_ * sin(heading_));
-    aalineColor(surface, q_(0), q_(1), v(0), v(1), borderColor_);
+	float theta = 0.0f;
+	glEnable(GL_BLEND);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4f(fillColor_.r, fillColor_.g, fillColor_.b, fillColor_.a);
+	glBegin(GL_TRIANGLE_FAN);
+	for (int i = 0; i < segments; ++i) {
+        vertices[i] = q_ + radius_ * Vector2d(cos(theta), sin(theta));
+		glVertex2f(vertices[i](0), vertices[i](1));
+		theta += increment;
+	}
+	glEnd();
+	glDisable(GL_BLEND);
+    
+	theta = 0.0f;
+	glColor4f(borderColor_.r, borderColor_.g, borderColor_.b, borderColor_.a);
+	glBegin(GL_LINE_LOOP);
+	for (int i = 0; i < segments; ++i) {
+		glVertex2f(vertices[i](0), vertices[i](1));
+	}
+	glEnd();
+    
+    Vector2d vh(q_ + radius_ * Vector2d(cos(heading_), sin(heading_)));
+	glBegin(GL_LINES);
+	glVertex2f(q_(0), q_(1));
+	glVertex2f(vh(0), vh(1));
+	glEnd();
+
+//    SDL_Surface* surface = world_->surface();
+//    filledCircleColor(surface, q_(0), q_(1), radius_, fillColor_);
+//    circleColor(surface, q_(0), q_(1), radius_, borderColor_);
+//    
+//    Vector2d v(q_(0) + radius_ * cos(heading_), q_(1) + radius_ * sin(heading_));
+//    aalineColor(surface, q_(0), q_(1), v(0), v(1), borderColor_);
 }
 
 void

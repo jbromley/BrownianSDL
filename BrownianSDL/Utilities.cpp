@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Applied Minds, LLC. All rights reserved.
 //
 
+#include <cmath>
 #include "Utilities.h"
 
 
@@ -27,69 +28,90 @@ convertColorToRGBA(Uint32 color, Uint8* r, Uint8* g, Uint8* b, Uint8* a)
     *r = color & 0xff;
 }
 
-Uint32
+GLColor
 randomRedGreenBlue()
 {
-    int r = 0;
-    int g = 0;
-    int b = 0;
+    float r = 0.0f;
+    float g = 0.0f;
+    float b = 0.0f;
     u_int32_t component = arc4random_uniform(3);
     switch (component) {
         case 0:
-            r = 255;
+            r = 1.0f;
             break;
         case 1:
-            g = 255;
+            g = 1.0f;
             break;
         case 2:
-            b = 255;
+            b = 1.0f;
             break;
     }
     
-    return convertRGBAToColor(r, g, b, 255);
+    return GLColor(r, g, b, 1.0f);
 }
 
-Uint32
+GLColor
 randomRedBlueBlack()
 {
-    int r = 0;
-    int b = 0;
+    float r = 0.0f;
+    float b = 0.0f;
     u_int32_t component = arc4random_uniform(3);
     switch (component) {
         case 0:
-            r = 255;
+            r = 1.0f;
             break;
         case 1:
-            b = 255;
+            b = 1.0f;
             break;
         default:
             // Do nothing, return a black color.
             break;
     }
-    return convertRGBAToColor(r, 0, b, 255);
+
+    return GLColor(r, 0.0f, b, 1.0f);
 }
 
-Uint32
+GLColor
 randomYellowMagentaCyan()
 {
-    Uint8 components[3] = {0};
+    float components[3] = {1.0f};
     
-    u_int32_t comp1 = arc4random_uniform(3);
-    u_int32_t comp2 = comp1;
-    while (comp2 == comp1) {
-        comp2 = arc4random_uniform(3);
-    }
-    components[comp1] = 255;
-    components[comp2] = 255;
-    return convertRGBAToColor(components[0], components[1], components[2], 255);
+    u_int32_t notComp = arc4random_uniform(3);
+    components[notComp] = 0.0f;
+    return GLColor(components[0], components[1], components[2], 1.0f);
 }
 
 
-Uint32
+GLColor
 randomPrimaryColor()
 {
     Uint8 r = arc4random_uniform(2);
     Uint8 g = arc4random_uniform(2);
     Uint8 b = arc4random_uniform(2);
-    return convertRGBAToColor(r * 255, g * 255, b * 255, 255);
+    return GLColor(r, g, b, 1.0);
 }
+
+float
+randomFloat()
+{
+    return static_cast<float>(arc4random()) / UINT32_MAX;
+}
+
+float
+randomFloat(float minValue, float maxValue)
+{
+    return minValue + (randomFloat() * (maxValue - minValue));
+}
+
+float
+roundToInt(float value)
+{
+    return floor(value + 0.5f);
+}
+
+int nextPowerOfTwo(int x)
+{
+	double logbase2 = log(x) / log(2);
+	return round(pow(2, ceil(logbase2)));
+}
+

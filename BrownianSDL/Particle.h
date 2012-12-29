@@ -11,6 +11,7 @@
 
 #include "GameEngine.h"
 #include "Averager.h"
+#include "GLColor.h"
 #include <iostream>
 #include <SDL.h>
 #include <Eigen/Core>
@@ -20,8 +21,8 @@ using namespace Eigen;
 class Particle
 {
 public:
-    Particle(double x, double y, int radius, double speed, Uint32 color,
-             GameEngine* world);
+    Particle(double x, double y, int radius, double speed,
+             const GLColor& color, GameEngine* world);
     ~Particle();
     
     void update(long timeElapsed);
@@ -37,8 +38,8 @@ private:
     double heading_;
     int radius_;
     double speed_;
-    Uint32 borderColor_;
-    Uint32 fillColor_;
+    GLColor borderColor_;
+    GLColor fillColor_;
     bool useAverager_;
     Averager* averager_;
     GameEngine* world_;

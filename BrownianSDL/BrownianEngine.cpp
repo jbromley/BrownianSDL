@@ -8,19 +8,24 @@
 
 
 BrownianEngine::BrownianEngine(const char* resourcesPath)
-: GameEngine(800, 600, resourcesPath), particleRadius_(16),
-particleSpeed_(64.0), particleAveraging_(true), particleAlpha_(0.25),
-font_(NULL), textColor_({255, 255, 255}), showStats_(false)
+  : GameEngine(800, 600, resourcesPath),
+    particleRadius_(16),
+    particleSpeed_(64.0),
+    particleAveraging_(true),
+    particleAlpha_(0.25),
+    font_(NULL),
+    textColor_(GLColor::white()),
+    showStats_(false)
 {
     if (TTF_Init() == -1) {
         std::cerr << "SDL_ttf error: " << TTF_GetError() << std::endl;
     }
     std::string fontPath = resourcePath() + "/Arial.ttf";
-    font_ = TTF_OpenFont(fontPath.c_str(), 16);
+    font_ = TTF_OpenFont(fontPath.c_str(), 12);
     if (font_ == NULL) {
         std::cerr << "SDL_ttf error: " << TTF_GetError() << std::endl;
     }
-    TTF_SetFontStyle(font_, TTF_STYLE_BOLD);
+//    TTF_SetFontStyle(font_, TTF_STYLE_BOLD);
 }
 
 BrownianEngine::~BrownianEngine()
@@ -48,7 +53,7 @@ BrownianEngine::update(long elapsedTime)
              std::bind2nd(std::mem_fun(&Particle::update), elapsedTime));
 }
 
-void BrownianEngine::render(SDL_Surface* destSurface)
+void BrownianEngine::render()
 {
     for_each(particles_.begin(), particles_.end(), std::mem_fun(&Particle::render));
 
@@ -66,13 +71,66 @@ BrownianEngine::renderStatistics()
         << ", averaging " << (particleAveraging_ ? "on" : "off")
         << ", alpha " << particleAlpha_
         << ", " << fps() << " fps";
-    SDL_Surface* textSurface = TTF_RenderText_Blended(font_,
-                                                      statMsg.str().c_str(),
-                                                      textColor_);
-    Sint16 textY = static_cast<Sint16>(height() - 20);
-    SDL_Rect location = { 20, textY, 0, 0};
-    SDL_BlitSurface(textSurface, NULL, surface(), &location);
-    SDL_FreeSurface(textSurface);
+    renderText(statMsg.str(), 2.0f, 2.0f);
+}
+
+void
+BrownianEngine::renderText(const std::string &text, float x, float y)
+{
+	// Use SDL_TTF to render the text onto an initial surface.
+	SDL_Surface* textSurface = TTF_RenderText_Blended(font_, text.c_str(), textColor_.toSDLColor());
+	
+	/* Convert the rendered text to a known format */
+	int w = nextPowerOfTwo(textSurface->w);
+	int h = nextPowerOfTwo(textSurface->h);
+	
+	SDL_Surface* intermediary = SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_SRCALPHA, w, h, 32,
+                                                     0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+    SDL_SetAlpha(textSurface, 0, 0);
+	SDL_BlitSurface(textSurface, NULL, intermediary, NULL);
+	
+	/* Tell GL about our new texture */
+    GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, 4, w, h, 0, GL_BGRA,
+                 GL_UNSIGNED_BYTE, intermediary->pixels );
+	
+	/* GL_NEAREST looks horrible, if scaled... */
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+	/* prepare to render our texture */
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glColor4f(textColor_.r, textColor_.g, textColor_.b, textColor_.a);
+	
+	// Draw a quad at location.
+	glBegin(GL_QUADS);
+    // Recall that the origin is in the lower-left corner. That is why the
+    // TexCoords specify different corners than the Vertex coors seem to.
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex2f(x, y);
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex2f(x + w, y);
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex2f(x + w, y + h);
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex2f(x, y + h);
+	glEnd();
+	
+	// Bad things happen if we delete the texture before it finishes.
+	glFinish();
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_BLEND);
+	
+	// Clean up.
+	SDL_FreeSurface(intermediary);
+	SDL_FreeSurface(textSurface);
+	glDeleteTextures(1, &texture);
 }
 
 void
@@ -119,12 +177,12 @@ BrownianEngine::keyDown(int keyCode)
                      std::bind2nd(std::mem_fun(&Particle::setAveraging), particleAveraging_));
             break;
         case SDLK_b:
-            if (backgroundColor() == 0x000000ff) {
-                setBackgroundColor(0xffffffff);
-                textColor_ = {0, 0, 0};
+            if (backgroundColor() == GLColor::black()) {
+                setBackgroundColor(GLColor::white());
+                textColor_ = GLColor::black();
             } else {
-                setBackgroundColor(0x000000ff);
-                textColor_ = {255, 255, 255};
+                setBackgroundColor(GLColor::black());
+                textColor_ = GLColor::white();
             }
             break;
         case SDLK_s:
@@ -162,7 +220,7 @@ void
 BrownianEngine::addParticle(int x, int y)
 {
 //    Uint32 color = randomYellowMagentaCyan();
-    Uint32 color = randomPrimaryColor();
+    GLColor color = randomPrimaryColor();
     Particle* p = new Particle(x, y, particleRadius_, particleSpeed_, color, this);
     particles_.push_back(p);
 }

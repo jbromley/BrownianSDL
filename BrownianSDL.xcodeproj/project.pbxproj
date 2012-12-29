@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69E8ED93168EDA1100297988 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E8ED92168EDA1100297988 /* OpenGL.framework */; };
+		69E8ED97168EDA8F00297988 /* GLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69E8ED95168EDA8F00297988 /* GLColor.cpp */; };
+		69E8ED9D168EED1E00297988 /* Brownian.icns in Resources */ = {isa = PBXBuildFile; fileRef = 69E8ED9C168EED1E00297988 /* Brownian.icns */; };
 		7D25BF571677B7D300E9750A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF561677B7D300E9750A /* Foundation.framework */; };
 		7D25BF591677B7D300E9750A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25BF581677B7D300E9750A /* Cocoa.framework */; };
 		7D25BF5F1677B7D300E9750A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D25BF5D1677B7D300E9750A /* InfoPlist.strings */; };
@@ -44,6 +47,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		69E8ED92168EDA1100297988 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		69E8ED95168EDA8F00297988 /* GLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLColor.cpp; sourceTree = "<group>"; };
+		69E8ED96168EDA8F00297988 /* GLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLColor.h; sourceTree = "<group>"; };
+		69E8ED9C168EED1E00297988 /* Brownian.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Brownian.icns; sourceTree = "<group>"; };
 		7D25BF521677B7D300E9750A /* BrownianSDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrownianSDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D25BF561677B7D300E9750A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7D25BF581677B7D300E9750A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -74,9 +81,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D25BF8816780BBD00E9750A /* SDL_ttf.framework in Frameworks */,
 				7D25BF7F1677CD0600E9750A /* SDL.framework in Frameworks */,
 				7D25BF7C1677C0B500E9750A /* SDL_gfx.framework in Frameworks */,
+				7D25BF8816780BBD00E9750A /* SDL_ttf.framework in Frameworks */,
+				69E8ED93168EDA1100297988 /* OpenGL.framework in Frameworks */,
 				7D25BF571677B7D300E9750A /* Foundation.framework in Frameworks */,
 				7D25BF591677B7D300E9750A /* Cocoa.framework in Frameworks */,
 			);
@@ -88,6 +96,7 @@
 		7D25BF461677B7D300E9750A = {
 			isa = PBXGroup;
 			children = (
+				69E8ED9C168EED1E00297988 /* Brownian.icns */,
 				7D25BF5A1677B7D300E9750A /* BrownianSDL */,
 				7D25BF551677B7D300E9750A /* Frameworks */,
 				7D25BF531677B7D300E9750A /* Products */,
@@ -108,6 +117,7 @@
 				7D25BF7E1677CD0600E9750A /* SDL.framework */,
 				7D25BF7B1677C0B500E9750A /* SDL_gfx.framework */,
 				7D25BF8716780BBD00E9750A /* SDL_ttf.framework */,
+				69E8ED92168EDA1100297988 /* OpenGL.framework */,
 				7D25BF561677B7D300E9750A /* Foundation.framework */,
 				7D25BF581677B7D300E9750A /* Cocoa.framework */,
 			);
@@ -148,6 +158,8 @@
 				7D25BF781677BC1700E9750A /* Particle.cpp */,
 				7DC3054A16851752004D1226 /* Averager.cpp */,
 				7DC3054B16851752004D1226 /* Averager.h */,
+				69E8ED96168EDA8F00297988 /* GLColor.h */,
+				69E8ED95168EDA8F00297988 /* GLColor.cpp */,
 				7D25BF831677E79200E9750A /* Utilities.h */,
 				7D25BF821677E79200E9750A /* Utilities.cpp */,
 			);
@@ -209,6 +221,7 @@
 				7D25BF5F1677B7D300E9750A /* InfoPlist.strings in Resources */,
 				7D25BF861677FF3900E9750A /* icon.png in Resources */,
 				7D25BF8C1678106500E9750A /* Arial.ttf in Resources */,
+				69E8ED9D168EED1E00297988 /* Brownian.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +238,7 @@
 				7D25BF7A1677BC1700E9750A /* Particle.cpp in Sources */,
 				7D25BF841677E79200E9750A /* Utilities.cpp in Sources */,
 				7DC3054C16851752004D1226 /* Averager.cpp in Sources */,
+				69E8ED97168EDA8F00297988 /* GLColor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

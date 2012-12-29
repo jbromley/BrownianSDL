@@ -10,6 +10,7 @@
 #define __SDLTest__Utilities__
 
 #include <SDL.h>
+#include "GLColor.h"
 
 
 Uint32
@@ -18,16 +19,16 @@ convertRGBAToColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 void
 convertColorToRGBA(Uint32 color, Uint8* r, Uint8* g, Uint8* b, Uint8* a);
 
-Uint32
+GLColor
 randomRedGreenBlue();
 
-Uint32
+GLColor
 randomRedBlueBlack();
 
-Uint32
+GLColor
 randomYellowMagentaCyan();
 
-Uint32
+GLColor
 randomPrimaryColor();
 
 template <typename T>
@@ -40,6 +41,18 @@ T clamp(T& value, T minValue, T maxValue)
     }
     return value;
 }
+
+float
+randomFloat();
+
+float
+randomFloat(float minValue, float maxValue);
+
+float
+roundToInt(float value);
+
+int
+nextPowerOfTwo(int x);
 
 
 #endif /* defined(__SDLTest__Utilities__) */

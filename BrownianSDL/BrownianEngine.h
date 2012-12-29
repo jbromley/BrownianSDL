@@ -12,7 +12,7 @@ public:
     
     virtual void initializeData();
     virtual void update(long elapsedTime);
-    virtual void render(SDL_Surface* destSurface);
+    virtual void render();
  
     virtual void keyDown(int keyCode);
     virtual void keyUp(int keyCode);
@@ -21,6 +21,7 @@ public:
 private:
     void addParticle(int x, int y);
     void renderStatistics();
+    void renderText(const std::string &text, float x, float y);
     
     std::vector<Particle*> particles_;
     int particleRadius_;
@@ -28,6 +29,6 @@ private:
     bool particleAveraging_;
     double particleAlpha_;
     TTF_Font* font_;
-    SDL_Color textColor_;
+    GLColor textColor_;
     bool showStats_;
 };
