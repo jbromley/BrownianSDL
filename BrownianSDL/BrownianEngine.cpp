@@ -1,7 +1,11 @@
+#include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <functional>
+#ifndef __APPLE__
+#include <bsd/stdlib.h>
+#endif
 #include "BrownianEngine.h"
 #include "Particle.h"
 #include "Utilities.h"
@@ -10,7 +14,7 @@
 BrownianEngine::BrownianEngine(const char* resourcesPath)
 : GameEngine(800, 600, resourcesPath), particleRadius_(16),
 particleSpeed_(64.0), particleAveraging_(true), particleAlpha_(0.25),
-font_(NULL), textColor_({255, 255, 255}), showStats_(false)
+font_(NULL), showStats_(false)
 {
     if (TTF_Init() == -1) {
         std::cerr << "SDL_ttf error: " << TTF_GetError() << std::endl;
@@ -21,6 +25,9 @@ font_(NULL), textColor_({255, 255, 255}), showStats_(false)
         std::cerr << "SDL_ttf error: " << TTF_GetError() << std::endl;
     }
     TTF_SetFontStyle(font_, TTF_STYLE_BOLD);
+
+    setBackgroundColor(convertRGBAToColor(0, 0, 0, 0));
+    textColor_ = {255, 255, 255};
 }
 
 BrownianEngine::~BrownianEngine()
@@ -45,7 +52,7 @@ void
 BrownianEngine::update(long elapsedTime)
 {
     for_each(particles_.begin(), particles_.end(),
-             std::bind2nd(std::mem_fun(&Particle::update), elapsedTime));
+	     std::bind2nd(std::mem_fun(&Particle::update), elapsedTime));
 }
 
 void BrownianEngine::render(SDL_Surface* destSurface)
@@ -119,11 +126,11 @@ BrownianEngine::keyDown(int keyCode)
                      std::bind2nd(std::mem_fun(&Particle::setAveraging), particleAveraging_));
             break;
         case SDLK_b:
-            if (backgroundColor() == 0x000000ff) {
-                setBackgroundColor(0xffffffff);
+            if (backgroundColor() == 0x00000000) {
+                setBackgroundColor(convertRGBAToColor(255, 255, 255, 255));
                 textColor_ = {0, 0, 0};
             } else {
-                setBackgroundColor(0x000000ff);
+                setBackgroundColor(convertRGBAToColor(0, 0, 0, 0));
                 textColor_ = {255, 255, 255};
             }
             break;

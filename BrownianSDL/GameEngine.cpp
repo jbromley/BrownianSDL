@@ -2,9 +2,15 @@
 #include <iostream>
 
 GameEngine::GameEngine(int width, int height, const std::string& resourcePath)
-: lastTick_(0), width_(width), height_(height), backgroundColor_(0x000000ff),
-screen_(0), fpsTickCounter_(0), fpsCounter_(0), currentFps_(0),
-minimized_(false), resourcePath_(resourcePath)
+  : lastTick_(0), 
+    width_(width), 
+    height_(height), 
+    screen_(0), 
+    fpsTickCounter_(0), 
+    fpsCounter_(0), 
+    currentFps_(0),
+    minimized_(false), 
+    resourcePath_(resourcePath)
 {
 }
 

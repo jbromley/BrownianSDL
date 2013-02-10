@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Applied Minds, LLC. All rights reserved.
 //
 
+#ifndef __APPLE__
+#include <bsd/stdlib.h>
+#endif
 #include "Utilities.h"
 
 

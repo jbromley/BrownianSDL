@@ -9,8 +9,11 @@
 #include "Particle.h"
 #include "Utilities.h"
 #include <cmath>
-#include <SDL_gfxPrimitives.h>
 #include <iostream>
+#include <SDL/SDL_gfxPrimitives.h>
+#ifndef __APPLE__
+#include <bsd/stdlib.h>
+#endif
 
 
 Particle::Particle(double x, double y, int radius, double speed,

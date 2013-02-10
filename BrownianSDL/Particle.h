@@ -12,7 +12,7 @@
 #include "GameEngine.h"
 #include "Averager.h"
 #include <iostream>
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include <Eigen/Core>
 using namespace Eigen;
 

@@ -9,7 +9,7 @@
 #ifndef __SDLTest__Utilities__
 #define __SDLTest__Utilities__
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 
 Uint32
