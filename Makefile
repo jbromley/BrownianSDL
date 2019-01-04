@@ -9,11 +9,11 @@ OBJS =	GameEngine.o \
 OUTPUT = brownian
 
 CXX = g++
-CXXFLAGS = -std=c++11 -ggdb -D_GNU_SOURCE=1 -D_REENTRANT -IBrownian -I/usr/include -I/usr/include/eigen2
+CXXFLAGS = -std=c++11 -ggdb -D_GNU_SOURCE=1 -D_REENTRANT -IBrownian -I/usr/include -I/usr/include/eigen3
 LDFLAGS = -L/usr/lib -lSDL -lSDL_gfx -lSDL_ttf -lpthread -lGL -lGLU -lglut -L/usr/lib64 -lbsd
 
 ${OUTPUT}: ${OBJS}
-	${CXX} ${LDFLAGS} ${OBJS} -o ${OUTPUT}
+	${CXX} ${OBJS} ${LDFLAGS} -o ${OUTPUT}
 
 clean:
 	rm -f ${OUTPUT} ${OBJS}
